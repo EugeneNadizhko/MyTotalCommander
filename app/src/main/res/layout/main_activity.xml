@@ -26,7 +26,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/total_commander"/>
+                android:background="@drawable/total_commander"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,11 +56,17 @@
             android:layout_gravity="center"
             android:textColor="@android:color/black"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
         <ImageButton
             android:id="@+id/custom_tool_bar_menu_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icons8_menu_2_96"/>
+            android:background="@drawable/icons8_menu_2_96"
+            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 
@@ -74,19 +81,20 @@
         android:id="@+id/ssd_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/icons8_ssd_96"/>
+            android:background="@drawable/icons8_ssd_96" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp">
 
             <TextView
@@ -95,6 +103,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/inner_ssd"/>
 
             <TextView
@@ -118,7 +127,7 @@
         android:id="@+id/photo_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -130,7 +139,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp">
 
             <TextView
@@ -139,6 +148,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/photo"/>
 
             <TextView
@@ -162,7 +172,7 @@
         android:id="@+id/loaded_files_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -183,6 +193,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/loaded_files"/>
 
             <TextView
@@ -206,7 +217,7 @@
         android:id="@+id/file_system_root_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -227,6 +238,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/file_system_root"/>
 
             <TextView
@@ -250,7 +262,7 @@
         android:id="@+id/tabs_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -271,6 +283,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/tabs"/>
 
             <TextView
@@ -294,7 +307,7 @@
         android:id="@+id/installed_programs_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -315,6 +328,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/installed_programs"/>
 
             <TextView
@@ -338,7 +352,7 @@
         android:id="@+id/add_plugins_layout"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -359,6 +373,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:text="@string/add_load_plugins"/>
 
             <TextView
