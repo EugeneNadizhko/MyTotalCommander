@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -18,8 +16,8 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toolbar tcCustomBottomToolbar, tcCustomTopToolbar;
     LinearLayout customToolBarBackHome;
-//    ImageButton customToolBarMenuButton;
 
     LinearLayout ssdLayout, photoLayout, loadedFilesLayout, fileSystemRootLayout,
             tabsLayout, installedProgramsLayout, addPluginsLayout;
@@ -32,21 +30,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-//        customToolBarBackHome = (LinearLayout)findViewById(R.id.custom_tool_bar_back_home);
-//        customToolBarBackHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//            }
-//        });
+        getSupportActionBar().hide();
 
-//        customToolBarMenuButton = (ImageButton)findViewById(R.id.custom_tool_bar_menu_button);
-//        customToolBarMenuButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getMenuInflater()
-//            }
-//        });
+        customToolBarBackHome = (LinearLayout)findViewById(R.id.custom_tool_bar_back_home);
+        customToolBarBackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
         ssdLayout = (LinearLayout)findViewById(R.id.ssd_layout);
         ssdLayout.setOnClickListener(new View.OnClickListener() {
@@ -144,15 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.custom_action_bar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
 
     @Override
     public void onBackPressed(){
