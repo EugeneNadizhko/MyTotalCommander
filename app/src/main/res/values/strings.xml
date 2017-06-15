@@ -19,4 +19,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="alert_dialog_add_plugins">Відкрити веб-браузер на сторінці: \n http://www.ghisler.com/androidplugins/googleplay</string>
+    <string name="alert_dialog_add_plugins_title">Додати плагіни</string>
+    <string name="alert_dialog_cancel">Скасувати</string>
+    <string name="alert_dialog_ok">ОК</string>
+    <string name="custom_menu_find">Пошук...</string>
+    <string name="custom_menu_exit">Вихід</string>
+    <string name="custom_menu_new_folder">Нова тека...</string>
+    <string name="custom_menu_settings">Налаштування...</string>
+    <string name="custom_menu_help">Довідка(HTML)</string>
+    <string name="my_total_commander_icon_custom_action_bar">MyTotalCommander</string>
+    <string name="folder_history_custom_action_bar">Історія \nкаталогів</string>
+    <string name="tabs_custom_action_bar">Закладки</string>
+    <string name="menu_custom_action_bar">Меню</string>
 </resources>

@@ -1,11 +1,8 @@
 package com.wayapp.mytotalcommander;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,13 +13,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.io.File;
-import java.util.zip.Inflater;
 
 public class RecyclerViewFragment extends Fragment {
 
     RecyclerView myTCRecyclerView;
     RecyclerView.Adapter myTCRecyclerViewAdapter;
     RecyclerView.LayoutManager myTCRecyclerLayoutManager;
+    File file;
+
+    public RecyclerViewFragment(File incomingFile) {
+        this.file = incomingFile;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,9 +41,11 @@ public class RecyclerViewFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(permissions[0].equals(android.Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0]== PackageManager.PERMISSION_GRANTED){
-            show(Environment.getExternalStorageDirectory());
+            Toast.makeText(getContext(), "Permission granted!", Toast.LENGTH_SHORT).show();
+            show(file);
         } else {
-            onDetach();
+            Toast.makeText(getContext(), "Permission is not granted! Shutting down..", Toast.LENGTH_SHORT).show();
+            onDestroy();
         }
     }
 

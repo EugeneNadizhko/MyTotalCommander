@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tc_icon_custom_action_bar"
+        android:icon="@drawable/total_commander"
+        android:showAsAction="always|withText"
+        android:title="@string/my_total_commander_icon_custom_action_bar"
+        app:showAsAction="always">
+
+    </item>
+    <item
+        android:id="@+id/folder_history_custom_action_bar"
+        android:showAsAction="always"
+        android:title="@string/folder_history_custom_action_bar">
+    </item>
+    <item
+        android:id="@+id/tabs_custom_action_bar"
+        android:showAsAction="always"
+        android:title="@string/tabs_custom_action_bar">
+    </item>
+    <item
+        android:id="@+id/menu_icon_custom_action_bar"
+        android:icon="@drawable/icons8_menu_2_96"
+        android:showAsAction="always"
+        android:title="@string/menu_custom_action_bar">
+    </item>
+</menu>
