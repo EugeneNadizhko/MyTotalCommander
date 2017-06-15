@@ -7,14 +7,25 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
 
 public class RecyclerViewFragment extends Fragment {
+
+//    Toolbar tcCustomTopToolbar;
+    LinearLayout customToolBarBackHome;
+//    Button customToolbarFolderHistoryButton, customToolbarTabsButton;
+//    ImageButton customToolbarMenuButton;
+//
+//    Toolbar tcCustomBottomToolbar;
 
     RecyclerView myTCRecyclerView;
     RecyclerView.Adapter myTCRecyclerViewAdapter;
@@ -35,6 +46,7 @@ public class RecyclerViewFragment extends Fragment {
         myTCRecyclerView = (RecyclerView)view.findViewById(R.id.my_total_commander_recycler_view);
         myTCRecyclerLayoutManager = new LinearLayoutManager(getContext());
         myTCRecyclerView.setLayoutManager(myTCRecyclerLayoutManager);
+
         return view;
     }
 
