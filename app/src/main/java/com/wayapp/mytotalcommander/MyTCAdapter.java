@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,14 +27,17 @@ class MyTCAdapter extends RecyclerView.Adapter<MyTCAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageViewOnRowLayout;
+        ImageSwitcher imageSwitcherRowLayout;
+        ImageView switcherImageViewChecked, switcherImageView;
         LinearLayout myTCRowLinearLayout;
         TextView topTextViewOnRowLayout;
         TextView bottomTextViewOnRowLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageViewOnRowLayout = (ImageView)itemView.findViewById(R.id.image_view_row_layout);
+            imageSwitcherRowLayout = (ImageSwitcher)itemView.findViewById(R.id.image_switcher_row_layout);
+            switcherImageView = (ImageView)itemView.findViewById(R.id.switcher_image_view);
+            switcherImageViewChecked = (ImageView)itemView.findViewById(R.id.switcher_image_view_checked);
             myTCRowLinearLayout = (LinearLayout)itemView.findViewById(R.id.my_tc_row_linear_layout);
             topTextViewOnRowLayout = (TextView)itemView.findViewById(R.id.top_text_view_row_layout);
             bottomTextViewOnRowLayout = (TextView)itemView.findViewById(R.id.bottom_text_view_row_layout);
@@ -49,15 +53,29 @@ class MyTCAdapter extends RecyclerView.Adapter<MyTCAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final File file = newFiles[position];
         String title = position == 0 ? "...": file.getName();
         holder.topTextViewOnRowLayout.setText(title);
         holder.bottomTextViewOnRowLayout.setText(String.valueOf(file.getPath()));
         if(file.isFile()){
-            holder.imageViewOnRowLayout.setImageResource(R.drawable.icons8_file_96);
+            holder.switcherImageView.setImageResource(R.drawable.icons8_file_96);
+            holder.switcherImageViewChecked.setImageResource(R.drawable.icons8_check_file);
+            holder.imageSwitcherRowLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.imageSwitcherRowLayout.showNext();
+                }
+            });
         } else {
-            holder.imageViewOnRowLayout.setImageResource(R.drawable.icons8_folder);
+            holder.switcherImageView.setImageResource(R.drawable.icons8_folder);
+            holder.switcherImageViewChecked.setImageResource(R.drawable.icons8_check_folder);
+            holder.imageSwitcherRowLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.imageSwitcherRowLayout.showNext();
+                }
+            });
             holder.myTCRowLinearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

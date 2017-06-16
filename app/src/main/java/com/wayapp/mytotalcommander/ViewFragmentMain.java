@@ -30,7 +30,6 @@ public class ViewFragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.view_fragment_main, container, false);
 
 //*********************************main screen elements description start************************************
-//***********************************************************************************************************
         ssdLayout = (LinearLayout)view.findViewById(R.id.ssd_layout);
         ssdLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +123,6 @@ public class ViewFragmentMain extends Fragment {
             }
         });
 //*********************************main screen elements description finish***********************************
-//***********************************************************************************************************
         return view;
     }
 }

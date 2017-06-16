@@ -7,10 +7,23 @@
     android:layout_marginRight="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/image_view_row_layout"
+    <ImageSwitcher
+        android:id="@+id/image_switcher_row_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="onSwitcherClick">
+
+        <ImageView
+            android:id="@+id/switcher_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/switcher_image_view_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </ImageSwitcher>
+
 
     <LinearLayout
         android:id="@+id/my_tc_row_linear_layout"
