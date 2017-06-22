@@ -4,14 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,32 +15,39 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import static java.security.AccessController.getContext;
-
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    Toolbar tcCustomTopToolbar;
     LinearLayout customToolBarBackHome;
     Button customToolbarFolderHistoryButton, customToolbarTabsButton;
     ImageButton customToolbarMenuButton;
-
-    Toolbar tcCustomBottomToolbar;
-
     FragmentTransaction fragmentTransaction;
     ViewFragmentMain viewFragmentMain;
+    RecyclerViewFragment recyclerViewFragment;
+    private boolean mainActivityRestarted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
+//        MainActivity lastMainActivity = (MainActivity) getLastCustomNonConfigurationInstance();
+//        mainActivityRestarted = lastMainActivity.mainActivityRestarted;
+
         getSupportActionBar().hide();
 
-        viewFragmentMain = new ViewFragmentMain();
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_fragment_container, viewFragmentMain)
-                .addToBackStack("ViewFragmentMain")
-                .commit();
+        if(mainActivityRestarted){
+            recyclerViewFragment = new RecyclerViewFragment();
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.main_fragment_container, recyclerViewFragment)
+                    .addToBackStack("RecyclerViewFragment")
+                    .commit();
+        } else {
+            viewFragmentMain = new ViewFragmentMain();
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.main_fragment_container, viewFragmentMain)
+                    .addToBackStack("ViewFragmentMain")
+                    .commit();
+        }
 //*********************************custom top toolbar elements description start*****************************
         customToolBarBackHome = (LinearLayout)findViewById(R.id.custom_tool_bar_back_home);
         customToolBarBackHome.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +83,21 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 //*********************************custom top toolbar elements description finish****************************
     }
+
+//    public Object onRetainCustomNonConfigurationInstance() {
+//        return this;
+//    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("mainActivityRestarted", mainActivityRestarted);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mainActivityRestarted = savedInstanceState.getBoolean("mainActivityRestarted");
+    }
+
 //*********************************custom popup menu description start***************************************
     public void showCustomPopupMenu(View view){
         PopupMenu popup = new PopupMenu(this, view);
@@ -155,4 +173,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return true;
     }
 //*********************************custom popup menu description finish***************************************
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mainActivityRestarted = true;
+        Toast.makeText(this, "set trueeee", Toast.LENGTH_SHORT).show();
+    }
 }

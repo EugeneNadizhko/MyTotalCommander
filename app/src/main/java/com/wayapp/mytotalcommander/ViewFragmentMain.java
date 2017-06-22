@@ -29,13 +29,13 @@ public class ViewFragmentMain extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.view_fragment_main, container, false);
 
+
 //*********************************main screen elements description start************************************
         ssdLayout = (LinearLayout)view.findViewById(R.id.ssd_layout);
         ssdLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File file = new File("/storage/emulated/0");
-                recyclerViewFragment= new RecyclerViewFragment(file);
+                recyclerViewFragment = newRecyclerViewFragmentInstance("/storage/emulated/0");
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_fragment_container, recyclerViewFragment)
                         .addToBackStack("ssdLayout")
@@ -47,8 +47,7 @@ public class ViewFragmentMain extends Fragment {
         photoLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File file = new File("/storage/emulated/0/DCIM");
-                recyclerViewFragment= new RecyclerViewFragment(file);
+                recyclerViewFragment = newRecyclerViewFragmentInstance("/storage/emulated/0/DCIM");
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_fragment_container, recyclerViewFragment)
                         .addToBackStack("photoLayout")
@@ -60,8 +59,7 @@ public class ViewFragmentMain extends Fragment {
         loadedFilesLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File file = new File("/storage/emulated/0/download");
-                recyclerViewFragment= new RecyclerViewFragment(file);
+                recyclerViewFragment = newRecyclerViewFragmentInstance("/storage/emulated/0/download");
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_fragment_container, recyclerViewFragment)
                         .addToBackStack("loadedFilesLayout")
@@ -73,8 +71,7 @@ public class ViewFragmentMain extends Fragment {
         fileSystemRootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File file = new File("/"); // TODO something wrong!!
-                recyclerViewFragment= new RecyclerViewFragment(file);
+                recyclerViewFragment = newRecyclerViewFragmentInstance("/"); // TODO something wrong!!
                 fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.main_fragment_container, recyclerViewFragment)
                         .addToBackStack("loadedFilesLayout")
@@ -124,5 +121,13 @@ public class ViewFragmentMain extends Fragment {
         });
 //*********************************main screen elements description finish***********************************
         return view;
+    }
+
+    public static RecyclerViewFragment newRecyclerViewFragmentInstance(String filePath) {
+        RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
+        Bundle args = new Bundle();
+        args.putString("filePath", filePath);
+        recyclerViewFragment.setArguments(args);
+        return recyclerViewFragment;
     }
 }
