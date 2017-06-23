@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     FragmentTransaction fragmentTransaction;
     ViewFragmentMain viewFragmentMain;
     RecyclerViewFragment recyclerViewFragment;
-    private boolean mainActivityRestarted = false;
+    boolean mainActivityRestarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.main_activity);
 
 //        MainActivity lastMainActivity = (MainActivity) getLastCustomNonConfigurationInstance();
@@ -84,13 +85,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 //*********************************custom top toolbar elements description finish****************************
     }
 
-//    public Object onRetainCustomNonConfigurationInstance() {
-//        return this;
-//    }
-
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        mainActivityRestarted = true;
         outState.putBoolean("mainActivityRestarted", mainActivityRestarted);
+        super.onSaveInstanceState(outState);
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -173,11 +171,4 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return true;
     }
 //*********************************custom popup menu description finish***************************************
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mainActivityRestarted = true;
-        Toast.makeText(this, "set trueeee", Toast.LENGTH_SHORT).show();
-    }
 }
